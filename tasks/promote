@@ -15,26 +15,20 @@ mkdir -p ~/.ssh/
 cat "${BASE_DIR}/secrets/known_hosts" >> ~/.ssh/known_hosts
 
 pushd repo > /dev/null
+  git config --global user.email "coreyti+ci@gmail.com"
+  git config --global user.name "Concourse Build"
+
   git fetch --tags
 
   found=$(git tag --list ${tag})
   datestamp=$(date)
   timestamp=$(date '+%s')
 
-  git config --global user.email "coreyti+ci@gmail.com"
-  git config --global user.name "Concourse Build"
-
-  echo "Changes as of ${datestamp}"               >> ${REPO_DIR}/CHANGELOG.txt
-  echo "----------------------------------------" >> ${REPO_DIR}/CHANGELOG.txt
-
   if [ -n "${found}" ] ; then
     git push origin :refs/tags/${tag}
-    git log ${tag}...HEAD >> ${REPO_DIR}/CHANGELOG.txt
-  else
-    git log $(git rev-list --max-parents=0 HEAD)...HEAD \
-      >> ${REPO_DIR}/CHANGELOG.txt
   fi
 
+  echo "Promoted to ${tag} at ${datestamp}" >> ${REPO_DIR}/PROMOTIONS.txt
 
   git add .
   git tag -f "${tag}"
