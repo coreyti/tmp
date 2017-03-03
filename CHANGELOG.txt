@@ -152,3 +152,22 @@ Author: Concourse Build <coreyti+ci@gmail.com>
 Date:   Fri Mar 3 18:51:17 2017 +0000
 
     CI Promote at Fri Mar  3 18:51:14 UTC 2017
+Changes as of Fri Mar  3 18:54:01 UTC 2017
+----------------------------------------
+commit faa15744beb84ccb6d7691799a7f69417d80217f
+Author: Corey Innis <cinnis@pivotal.io>
+Date:   Fri Mar 3 10:56:07 2017 -0800
+
+    Actually fail when desired
+
+commit 8c5b84275e9ab08241ec8072a4bf90c7e3523c82
+Author: Corey Innis <cinnis@pivotal.io>
+Date:   Fri Mar 3 10:54:14 2017 -0800
+
+    Trigger builds on changes
+
+commit 31d4f062391431935c3e47cccaccc14c5e433e32
+Author: Concourse Build <coreyti+ci@gmail.com>
+Date:   Fri Mar 3 18:52:19 2017 +0000
+
+    CI Promote at Fri Mar  3 18:52:16 UTC 2017
