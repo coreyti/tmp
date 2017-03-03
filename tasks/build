@@ -10,5 +10,5 @@ end
 if mod == 0
   puts "success"
 else
-  puts "failure (will be)"
+  raise "failure (will be)"
 end
