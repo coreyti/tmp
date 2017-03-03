@@ -7,6 +7,7 @@ REPO_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 eval $(ssh-agent -s)
 chmod 400 ./secrets/id_rsa
 ssh-add ./secrets/id_rsa
+mkdir ~/.ssh/
 cat "${BASE_DIR}/secrets/known_hosts" >> ~/.ssh/known_hosts
 
 pushd repo > /dev/null
