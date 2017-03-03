@@ -3,11 +3,12 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 NOW=$(date)
 
+chmod 400 ./secrets/id_rsa
 eval $(ssh-agent -s)
 ssh-add ./secrets/id_rsa
 
 pushd repo > /dev/null
-  yes | git fetch --tags
+echo "yes" | git fetch --tags
 
   found=$(git tag --list | grep ${tag})
   timestamp=$(date '+%s')
