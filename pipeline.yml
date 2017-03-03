@@ -6,6 +6,7 @@ jobs:
       - get:        secrets
       - get:        repo
         resource:   repo-develop
+        trigger:    true
       - task:       build
         file:       repo/tasks/build.yml
       - task:       promote
@@ -18,6 +19,7 @@ jobs:
       - get:        secrets
       - get:        repo
         resource:   repo-staging
+        trigger:    true
       - task:       build
         file:       repo/tasks/build.yml
       - task:       promote
@@ -30,6 +32,7 @@ jobs:
       - get:        secrets
       - get:        repo
         resource:   repo-production
+        trigger:    true
       - task:       build
         file:       repo/tasks/build.yml
       - task:       promote
