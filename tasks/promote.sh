@@ -40,5 +40,5 @@ pushd repo > /dev/null
   git tag -f "${tag}"
   git tag -f "${tag}-${timestamp}"
   git commit -m "CI Promote at ${datestamp}"
-  git push origin master --tags
+  git push origin HEAD:master --tags
 popd > /dev/null
