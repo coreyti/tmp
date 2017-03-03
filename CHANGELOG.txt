@@ -1,0 +1,106 @@
+Changes as of Fri Mar  3 18:39:06 UTC 2017
+----------------------------------------
+commit 7314cdbbe62492b0319e268df6204fe9209ddfc0
+Author: Corey Innis <cinnis@pivotal.io>
+Date:   Fri Mar 3 10:44:59 2017 -0800
+
+    Fix various issues in promote task
+    
+    - use better bash flags
+    - fix `REPO_DIR`
+    - don't fail if `.ssh` exists
+    - fix/improve tag handling
+    - improve `CHANGELOG` edit
+    - add missing `git add` and `git commit`
+
+commit 1a75fe0dc90809572444b73840d06812f650da85
+Author: Corey Innis <cinnis@pivotal.io>
+Date:   Fri Mar 3 09:56:17 2017 -0800
+
+    Attempt (again #2) to allow Github host
+
+commit ae0ab2281272f9eae4b9e6d264a55c579b8902a8
+Author: Corey Innis <cinnis@pivotal.io>
+Date:   Fri Mar 3 09:54:51 2017 -0800
+
+    Attempt (again) to allow Github host
+
+commit b34c45c70595d99d5fb899d21ea81ae0d8570018
+Author: Corey Innis <cinnis@pivotal.io>
+Date:   Fri Mar 3 09:48:52 2017 -0800
+
+    Fix (?) trusting of Github, and paths
+
+commit cb5dfd6491cb5910ecde5830c76ee0fc8d884f2d
+Author: Corey Innis <cinnis@pivotal.io>
+Date:   Fri Mar 3 09:00:21 2017 -0800
+
+    Attempt to fix ssh trusts
+
+commit 12213e48776ce1a7df83876ef7ba247ef570714f
+Author: Corey Innis <cinnis@pivotal.io>
+Date:   Fri Mar 3 08:58:27 2017 -0800
+
+    (Actually) add secrets input to promote task
+
+commit 2d00b029bdfba5247e386d02288a3e6c939fa014
+Author: Corey Innis <cinnis@pivotal.io>
+Date:   Fri Mar 3 08:56:45 2017 -0800
+
+    Fix pipeline resource config
+
+commit 2e940805b2889baa289591c4ad9bfe48b6c338a7
+Author: Corey Innis <cinnis@pivotal.io>
+Date:   Fri Mar 3 08:55:16 2017 -0800
+
+    Add missing secrets input for promote
+
+commit 18f4149f2cd970e5a594046d4ff952d85d31d0d6
+Author: Corey Innis <cinnis@pivotal.io>
+Date:   Fri Mar 3 08:51:55 2017 -0800
+
+    Fix key path and trust git host
+
+commit 6ca17b85741c87b3bd0d0a31db2fc8ce152d1c38
+Author: Corey Innis <cinnis@pivotal.io>
+Date:   Fri Mar 3 08:41:16 2017 -0800
+
+    Start SSH agent and fix director context
+
+commit 8b1268092fdf1f6041b918d8e75628b5a5525db8
+Author: Corey Innis <cinnis@pivotal.io>
+Date:   Fri Mar 3 08:38:41 2017 -0800
+
+    Load keys, commit, etc.
+
+commit 79b32fa50c0d21f0c4a54c29666d0f03262d307f
+Author: pivotal <pivotal@cinnis.local>
+Date:   Thu Mar 2 23:15:16 2017 -0800
+
+    Update pipeline with git config
+
+commit 36ecf997cf587c014b49842444c2acef920e6275
+Author: pivotal <pivotal@cinnis.local>
+Date:   Thu Mar 2 23:14:54 2017 -0800
+
+    Add git author
+
+commit b68ad87e9cfed0a972fae1251914892f615eeaf6
+Author: pivotal <pivotal@cinnis.local>
+Date:   Thu Mar 2 23:11:51 2017 -0800
+
+    Ooops... it's ruby
+
+commit db76b54b26156649c715b1e0db4bce7c85fc83ff
+Author: pivotal <pivotal@cinnis.local>
+Date:   Thu Mar 2 23:10:39 2017 -0800
+
+    WIP: let's not fail just yet
+
+commit b41c6d762f72e02d052368a7f99645f4a8c7c061
+Author: Corey Innis <cinnis@pivotal.io>
+Date:   Thu Mar 2 17:05:32 2017 -0800
+
+    WIP: tag-based promotion pipeline
+    
+    Signed-off-by: Corey Innis <cinnis@pivotal.io>
