@@ -1,0 +1,66 @@
+---
+jobs:
+
+  - name: develop
+    plan:
+      - get:        keys
+        resource:   keys
+      - get:        repo
+        resource:   repo-develop
+      - task:       build
+        file:       repo/tasks/build.yml
+      - task:       promote
+        file:       repo/tasks/promote.yml
+        params:
+          tag:      develop
+
+  - name: staging
+    plan:
+      - get:        keys
+        resource:   keys
+      - get:        repo
+        resource:   repo-staging
+      - task:       build
+        file:       repo/tasks/build.yml
+      - task:       promote
+        file:       repo/tasks/promote.yml
+        params:
+          tag:      staging
+
+  - name: production
+    plan:
+      - get:        keys
+        resource:   keys
+      - get:        repo
+        resource:   repo-production
+      - task:       build
+        file:       repo/tasks/build.yml
+      - task:       promote
+        file:       repo/tasks/promote.yml
+        params:
+          tag:      production
+
+resources:
+
+  - name: repo-develop
+    type: git
+    source:
+      uri:          git@github.com:coreyti/tmp.git
+      branch:       master
+      private_key:  {{private_key}}
+
+  - name: repo-staging
+    type: git
+    source:
+      uri:          git@github.com:coreyti/tmp.git
+      branch:       master
+      tag_filter:   develop
+      private_key:  {{private_key}}
+
+  - name: repo-production
+    type: git
+    source:
+      uri:          git@github.com:coreyti/tmp.git
+      branch:       master
+      tag_filter:   staging
+      private_key:  {{private_key}}

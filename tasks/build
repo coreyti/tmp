@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+now = Time.now.to_i
+mod = now % 2
+
+if mod == 0
+  echo "success"
+else
+  raise "failure"
+end
