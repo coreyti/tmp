@@ -4,7 +4,7 @@ now = Time.now.to_i
 mod = now % 2
 
 if mod == 0
-  echo "success"
+  puts "success"
 else
-  echo "failure (will be)"
+  puts "failure (will be)"
 end
