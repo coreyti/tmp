@@ -3,8 +3,8 @@ jobs:
 
   - name: develop
     plan:
-      - get:        repo
       - get:        secrets
+      - get:        repo
         resource:   repo-develop
       - task:       build
         file:       repo/tasks/build.yml
@@ -15,8 +15,8 @@ jobs:
 
   - name: staging
     plan:
-      - get:        repo
       - get:        secrets
+      - get:        repo
         resource:   repo-staging
       - task:       build
         file:       repo/tasks/build.yml
@@ -27,8 +27,8 @@ jobs:
 
   - name: production
     plan:
-      - get:        repo
       - get:        secrets
+      - get:        repo
         resource:   repo-production
       - task:       build
         file:       repo/tasks/build.yml
