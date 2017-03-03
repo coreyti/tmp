@@ -1,14 +1,16 @@
 #!/usr/bin/env bash
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 NOW=$(date)
+BASE_DIR=$(pwd)
+REPO_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+KNOWN_HOSTS_FILE="${BASE_DIR}/secrets/known_hosts"
 
-chmod 400 ./secrets/id_rsa
 eval $(ssh-agent -s)
+chmod 400 ./secrets/id_rsa
 ssh-add ./secrets/id_rsa
 
 pushd repo > /dev/null
-echo "yes" | git fetch --tags
+  git fetch --tags
 
   found=$(git tag --list | grep ${tag})
   timestamp=$(date '+%s')
@@ -19,9 +21,9 @@ echo "yes" | git fetch --tags
   if [ -n "${found}" ] ; then
     git push origin :refs/tags/${tag}
 
-    echo "Changes as of ${NOW}"                     >> ${DIR}/CHANGELOG.txt
-    echo "----------------------------------------" >> ${DIR}/CHANGELOG.txt
-    git log ${tag}...HEAD                           >> ${DIR}/CHANGELOG.txt
+    echo "Changes as of ${NOW}"                     >> ${REPO_DIR}/CHANGELOG.txt
+    echo "----------------------------------------" >> ${REPO_DIR}/CHANGELOG.txt
+    git log ${tag}...HEAD                           >> ${REPO_DIR}/CHANGELOG.txt
   fi
 
   git tag -fa "${tag}"
