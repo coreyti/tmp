@@ -1,7 +1,11 @@
 #!/usr/bin/env ruby
 
-now = Time.now.to_i
-mod = now % 2
+now = Time.now
+mod = now.to_i % 2
+
+File.open('README.md', 'a') do |file|
+  file.puts "Edited at #{now}"
+end
 
 if mod == 0
   puts "success"

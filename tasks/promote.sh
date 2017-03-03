@@ -1,17 +1,25 @@
 #!/usr/bin/env bash
 
-pushd repo/tasks > /dev/null
-  found=$(git tag --list | grep ${tag})
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+NOW=$(date)
 
-  git config --global user.email "you@example.com"
-  git config --global user.name "Your Name"
+ssh-add ${DIR}/secrets/id_rsa
 
-  if [ -n "${found}" ] ; then
-    git diff ${tag} > changelog.txt
-    git push origin :refs/tags/${tag}
-  fi
+found=$(git tag --list | grep ${tag})
+timestamp=$(date '+%s')
 
-  git tag -fa "${tag}"
-  git tag -fa "${tag}-$(date '+%s')"
-  git push origin master --tags
-popd > /dev/null
+git config --global user.email "coreyti+ci@gmail.com"
+git config --global user.name "Concourse Build"
+
+if [ -n "${found}" ] ; then
+  git push origin :refs/tags/${tag}
+
+  echo "Changes as of ${NOW}"                     >> ${DIR}/CHANGELOG.txt
+  echo "----------------------------------------" >> ${DIR}/CHANGELOG.txt
+  git log ${tag}...HEAD                           >> ${DIR}/CHANGELOG.txt
+fi
+
+git tag -fa "${tag}"
+git tag -fa "${tag}-${timestamp}"
+git commit -m "CI Promote at ${timestamp}"
+git push origin master --tags

@@ -3,7 +3,7 @@ jobs:
 
   - name: develop
     plan:
-      - get:        keys
+      - get:        secrets
       - get:        repo
         resource:   repo-develop
       - task:       build
@@ -15,7 +15,7 @@ jobs:
 
   - name: staging
     plan:
-      - get:        keys
+      - get:        secrets
       - get:        repo
         resource:   repo-staging
       - task:       build
@@ -27,7 +27,7 @@ jobs:
 
   - name: production
     plan:
-      - get:        keys
+      - get:        secrets
       - get:        repo
         resource:   repo-production
       - task:       build
@@ -39,7 +39,7 @@ jobs:
 
 resources:
 
-  - name: keys
+  - name: secrets
     type: git
     source:
       uri:          git@github.com:coreyti/tmp.keys.git
