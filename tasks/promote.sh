@@ -3,11 +3,11 @@
 NOW=$(date)
 BASE_DIR=$(pwd)
 REPO_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-KNOWN_HOSTS_FILE="${BASE_DIR}/secrets/known_hosts"
 
 eval $(ssh-agent -s)
 chmod 400 ./secrets/id_rsa
 ssh-add ./secrets/id_rsa
+cat "${BASE_DIR}/secrets/known_hosts" >> ~/.ssh/known_hosts
 
 pushd repo > /dev/null
   git fetch --tags
