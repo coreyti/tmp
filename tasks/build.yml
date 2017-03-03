@@ -9,6 +9,7 @@ image_resource:
 
 inputs:
   - name: repo
+  - name: secrets
 
 run:
   path: repo/tasks/build

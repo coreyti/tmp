@@ -3,8 +3,8 @@ jobs:
 
   - name: develop
     plan:
-      - get:        secrets
       - get:        repo
+      - get:        secrets
         resource:   repo-develop
       - task:       build
         file:       repo/tasks/build.yml
@@ -15,8 +15,8 @@ jobs:
 
   - name: staging
     plan:
-      - get:        secrets
       - get:        repo
+      - get:        secrets
         resource:   repo-staging
       - task:       build
         file:       repo/tasks/build.yml
@@ -27,8 +27,8 @@ jobs:
 
   - name: production
     plan:
-      - get:        secrets
       - get:        repo
+      - get:        secrets
         resource:   repo-production
       - task:       build
         file:       repo/tasks/build.yml
@@ -38,13 +38,6 @@ jobs:
           tag:      production
 
 resources:
-
-  - name: secrets
-    type: git
-    source:
-      uri:          git@github.com:coreyti/tmp.keys.git
-      branch:       master
-      private_key:  {{private_key__self}}
 
   - name: repo-develop
     type: git
@@ -68,3 +61,10 @@ resources:
       branch:       master
       tag_filter:   staging
       private_key:  {{private_key__code}}
+
+  - name: secrets
+    type: git
+    source:
+      uri:          git@github.com:coreyti/tmp.keys.git
+      branch:       master
+      private_key:  {{private_key__self}}
