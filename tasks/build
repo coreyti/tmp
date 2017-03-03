@@ -6,5 +6,5 @@ mod = now % 2
 if mod == 0
   echo "success"
 else
-  raise "failure"
+  echo "failure (will be)"
 end
