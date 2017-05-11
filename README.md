@@ -1,2 +1,8 @@
-tmp
-===
+# tmp
+
+```diff
+
++ add
+- out
+  same
+```
